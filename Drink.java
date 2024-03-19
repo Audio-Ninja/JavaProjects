@@ -11,12 +11,17 @@ public class Drink {
     public int getOunces() {
         return ounces;
     }
-    //A method to take a sip of the drink, reducing its ounces.
+    //A method to take a sip of the drink, reducing its ounces by a set amount.
     public void takeSip(int amount) {
+        //Only take a sip if the drink isn't empty, so it has some ounces left.
         if(ounces > 0) {
             ounces-= amount;
+            //You cannot drink more than the drink contains, so we must check for that.
             if(ounces < 0) {
+                //Set the amount sipped to not be greater than the amount in the drink.
                 amount += ounces;
+                //The amount of ounces cannot be negative, so we set it to zero if it is.
+                ounces = 0;
             }
             System.out.println(amount + " ounces was sipped from the " + type);
         }

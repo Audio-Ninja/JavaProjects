@@ -1,5 +1,6 @@
 public class ObjectsPartTwo {
     public static void main(String[] args) {
+        //Creates some objects using the drink class in another file
         Drink sprite = new Drink(12, "Coca-Cola", "Sprite");
         Drink orangeFanta = new Drink(16, "Coca-Cola", "Orange Fanta");
         Drink canadaDry = new Drink(12, "Pepsi", "Canada Dry");
@@ -12,6 +13,7 @@ public class ObjectsPartTwo {
         orangeFanta.print();
         canadaDry.print();
         canadaDry.takeSip(7);
-        canadaDry.takeSip(5);
+        canadaDry.takeSip(8);
+        canadaDry.print();
     }
 }
