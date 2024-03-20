@@ -25,10 +25,12 @@ public class Drink {
             }
             System.out.println(amount + " ounces was sipped from the " + type);
         }
-        if(ounces <= 0) {
+        //If the drink has no ounces, print that it is empty.
+        if(ounces == 0) {
             System.out.println("The drink " + type + " is now empty");
         }
     }
+    //Prints the drink type, brand, and current number of ounces onto the screen.
     public void print() {
         System.out.println("The Drink " + type + " of the brand " + brand + " currenty contains " + ounces + " ounces");
     }
