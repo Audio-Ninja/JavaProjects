@@ -9,9 +9,9 @@ public class ObjectsPartTwo {
         //The third drink
         Drink canadaDry = new Drink(12, "Pepsi", "Canada Dry");
         sprite.print(); //Uses the print method to show the attributes of the drink.
-        sprite.takeSip(4); //The takeSip method will decrease the amount of ounces in the sprite by the parameter value 4.
+        sprite.takeSip(4); //The takeSip method will reduce the sprite ounces by the parameter 4. It also prints how many ounces were removed.
         sprite.print();
-        sprite.takeSip(8); //Takes 8 more ounces from the sprite. The takeSip method also prints how many ounces were removed.
+        sprite.takeSip(8); //Takes 8 more ounces from the sprite. Since the drink is now empty, the method will print that it is empty.
         orangeFanta.print();
         orangeFanta.takeSip(6);
         System.out.println("It now has " + orangeFanta.getOunces() + " ounces."); //Uses the getOunces method to find the amount of ounces in the drink.
