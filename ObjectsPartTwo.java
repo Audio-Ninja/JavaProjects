@@ -3,11 +3,11 @@ public class ObjectsPartTwo {
     //Create some objects using the drink class in the Drink.java file.
     public static void main(String[] args) {
         //The first drink is Sprite made by the brand Coca-Cola. It is a typical can with 12 ounces.
-        Drink sprite = new Drink(12, "Coca-Cola", "Sprite");
+        Drink sprite = new Drink(12, "Sprite");
         //The second drink is an Orange flavored Fanta also made by the brand Coca-Cola. This one has 16 ounces.
-        Drink orangeFanta = new Drink(16, "Coca-Cola", "Orange Fanta");
+        Drink orangeFanta = new Drink(16, "Orange Fanta");
         //The third drink
-        Drink canadaDry = new Drink(12, "Pepsi", "Canada Dry");
+        Drink canadaDry = new Drink(12, "Canada Dry");
         sprite.print(); //Uses the print method to show the attributes of the drink.
         sprite.takeSip(4); //The takeSip method will reduce the sprite ounces by the parameter 4. It also prints how many ounces were removed.
         sprite.print();

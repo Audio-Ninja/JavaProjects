@@ -1,11 +1,9 @@
 public class Drink {
     int ounces; //The current number of ounces of the drink
-    String brand; //The brand of the drink
-    String type; //The type of soda under that brand.
-    public Drink( int ounces, String brand, String type) {
+    String name; //What the drink is called
+    public Drink(int ounces, String name) { //Drink constructor
         this.ounces = ounces;
-        this.brand = brand;
-        this.type = type;
+        this.name = name;
     }
     //A method to see how many calories are in the drink.
     public int getOunces() {
@@ -23,15 +21,15 @@ public class Drink {
                 //The amount of ounces cannot be negative, so we set it to zero if it is.
                 ounces = 0;
             }
-            System.out.println(amount + " ounces was sipped from the " + type);
+            System.out.println(amount + " ounces was sipped from the " + name);
         }
         //If the drink has no ounces, print that it is empty.
         if(ounces == 0) {
-            System.out.println("The drink " + type + " is now empty");
+            System.out.println("The drink " + name + " is now empty");
         }
     }
-    //Prints the drink type, brand, and current number of ounces onto the screen.
+    //Prints the drink name and current number of ounces onto the screen.
     public void print() {
-        System.out.println("The Drink " + type + " of the brand " + brand + " currenty contains " + ounces + " ounces");
+        System.out.println("The drink " + name + " currenty contains " + ounces + " ounces");
     }
 }

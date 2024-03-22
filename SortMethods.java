@@ -2,7 +2,8 @@
 //instructor: Mr Gross
 
 /*
-This project will create a random list of 15 numbers and sort then in order from least to greatest using a method called bubble sort. It will then sort the list using the selection sort method then compare the results of both methods.
+This project will create a random list of 15 numbers and sort then in order from least to greatest using a method called 
+bubble sort. It will then sort the list using the selection sort method then compare the results of both methods.
 */
 public class SortMethods {
 //This function prints a given array
