@@ -8,10 +8,10 @@ public class Weight implements Comparable<Weight> {
     }
 
     public int compareTo(Weight w) {
-        if(pounds == w.age) {
+        if(pounds == w.pounds) {
             return 0;
-        } else if(pounds < w.age) {
-            return 1;
+        } else if(pounds < w.pounds) {
+            return -1;
         } else {
             return 1;
         }
