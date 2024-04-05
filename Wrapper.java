@@ -1,4 +1,7 @@
 /*
+Created by Alma Stevens for CTE software development 1
+instructor: Mr Gross
+
 This project creates objects, edits them using their modifiers, and prints information about them using their attributes. 
 The objects are created with the Drink class and its two extensions: the Soda and Milk classes. 
 */
