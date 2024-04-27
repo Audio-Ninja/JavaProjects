@@ -7,7 +7,7 @@ bubble sort. It will then sort the list using the selection sort method then com
 */
 public class SortMethods {
 //This function prints a given array
-static void printList(int[]arrayToPrint){
+static void printList(int[]arrayToPrint) {
         for(byte i = 0; i < arrayToPrint.length; i++) {
         if(i == 0) System.out.print("[");
             System.out.print(arrayToPrint[i]);
