@@ -4,42 +4,42 @@
 import java.util.ArrayList;
 
 public class CardProject {
-    static void shuffle(ArrayList<Integer> numbers, ArrayList<String> face) {
-        for(int i = 0; i< numbers.size(); i++) {
-            int rand = (int)(Math.random() * numbers.size());
-            int temp = numbers.get(i);
-            numbers.set(i, numbers.get(rand));
-            numbers.set(rand, temp);
-            String tempString = face.get(i);
-            face.set(i, face.get(rand));
-            face.set(rand, tempString);
-        }
-    }
     public static void main(String[] args) {
         ArrayList<Integer> values = new ArrayList<Integer>();
-        ArrayList<String> faces = new ArrayList<String>();
+        ArrayList<String> suits = new ArrayList<String>();
 
         for(int i = 2; i < 15; i++) {
             values.add(i);
-            faces.add("Hearts");
+            suits.add("Hearts");
         }
         for(int i = 2; i < 15; i++) {
             values.add(i);
-            faces.add("Diamonds");
+            suits.add("Diamonds");
         }
         for(int i = 2; i < 15; i++) {
             values.add(i);
-            faces.add("Clubs");
+            suits.add("Clubs");
         }
         for(int i = 2; i < 15; i++) {
             values.add(i);
-            faces.add("Spades");
+            suits.add("Spades");
         }
         
-        shuffle(values, faces);
+        Dealer dealer = new Dealer("The Dealer");
+        Player player1 = new Player("Player 1");
+        Player player2 = new Player("Player 2");
+        Player player3 = new Player("Player 3");
 
-        for(int i = 0; i < values.size(); i++) {
-            System.out.println(values.get(i) + " of " + faces.get(i));
-        }
+        dealer.shuffle(values, suits);
+
+        dealer.deal(values, suits, player1);
+        dealer.deal(values, suits, player2);
+        dealer.deal(values, suits, player3);
+        dealer.deal(values, suits, dealer);
+
+        player1.showHand();
+        player2.showHand();
+        player3.showHand();
+        dealer.showHand();
     }
 }
