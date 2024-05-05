@@ -91,9 +91,14 @@ public class CardProject {
         String player4Score = player4.calculatePoints();
         String player5Score = player5.calculatePoints();
         
-        //With the scores calculated, we can now see who won.
-
+        //With the scores calculated, we can now check who won.
         
+        int highestScore = Integer.parseInt(dealerScore.substring(0,1));
+        if(Integer.parseInt(player1Score.substring(0,1)) > highestScore) {
+            highestScore = Integer.parseInt(player1Score.substring(0,1));
+        }
+        
+
         System.out.println();
         System.out.println("The Winner is:");
         System.out.println();
