@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Dealer extends Player {
 
-    public Dealer(String player) {
-        super(player);
+    public Dealer(String name) {
+        super(name);
     }
 
     void shuffle(ArrayList<Integer> numbers, ArrayList<String> face) {
@@ -18,6 +18,7 @@ public class Dealer extends Player {
                 face.set(rand, tempString);
             }    
         }
+        System.out.println(name + " shuffles the deck.");
     }
 
     void deal(ArrayList<Integer> numbers, ArrayList<String> face, Player player) {
