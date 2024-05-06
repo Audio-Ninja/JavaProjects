@@ -58,7 +58,7 @@ public class Player {
                 }
             }
             if(counter == 5) {
-                val = "0";
+                val = "0" + highest; //This is for a royal flush
                 return val;
             } else if(highest - lowest == 4) { //Check for a straight flush
                 val = "1" + highest;

@@ -18,7 +18,7 @@ public class Dealer extends Player {
                 face.set(rand, tempString);
             }    
         }
-        System.out.println(name + " shuffles the deck.");
+        System.out.println(name + " shuffles the deck thorougly.");
     }
 
     void deal(ArrayList<Integer> numbers, ArrayList<String> face, Player player) {

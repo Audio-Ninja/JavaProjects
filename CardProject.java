@@ -4,6 +4,80 @@
 import java.util.ArrayList;
 
 public class CardProject {
+    static String calculateWinner(ArrayList<String> scores, Dealer theDealer, ArrayList<Player> thePlayers) {
+        int highestScore = Integer.parseInt(scores.get(0).substring(0, 1));
+        int highIndex = 0;
+        for(int i = 1; i < scores.size(); i++) {
+            if(Integer.parseInt(scores.get(i).substring(0, 1)) < highestScore) {
+                highestScore = Integer.parseInt(scores.get(i).substring(0, 1));
+                highIndex = i;
+            }
+        }
+        int counter = 0;
+        for(int i = 0; i < scores.size(); i++) {
+            if(highestScore == Integer.parseInt(scores.get(i).substring(0, 1))) {
+                counter++;
+            } else {
+                scores.set(i, "90");
+            }
+        }
+        if(counter == 1) {
+            if(highIndex == 0) {
+                return theDealer.name;
+            } else {
+                return thePlayers.get(highIndex - 1).name;
+            }
+        } else {
+            int highestCard = Integer.parseInt(scores.get(0).substring(1));
+            int highCardIndex = 0;
+            for(int i = 1; i < scores.size(); i++) {
+                if(Integer.parseInt(scores.get(i).substring(1)) > highestCard) {
+                    highestCard = Integer.parseInt(scores.get(i).substring(1));
+                    highCardIndex = i;
+                }
+            }
+            counter = 0;
+            for(int i = 0; i < scores.size(); i++) {
+                if(highestCard == Integer.parseInt(scores.get(i).substring(1))) {
+                    counter++;
+                } else {
+                    scores.set(i, "90");
+                }
+            }
+            if(counter == 1) {
+                if(highCardIndex == 0) {
+                    return theDealer.name;
+                } else {
+                    return thePlayers.get(highCardIndex - 1).name;
+                }
+            } else {
+                int winners = 0;
+                for(int i = 0; i < scores.size(); i++) {
+                    if(scores.get(i) != "90") {
+                        winners++;
+                    }
+                }
+                String winner = "";
+                int currentWinner = 0;
+                for(int i = 0; i < scores.size(); i++) {
+                    if(scores.get(i) != "90") {
+                        currentWinner++;
+                        if(i == 0) {
+                            winner += theDealer.name;
+                        } else {
+                            winner += thePlayers.get(i - 1).name;
+                        }
+                        if(currentWinner == winners - 1) {
+                            winner += " and ";
+                        } else if(currentWinner < winners - 1) {
+                            winner += ", ";
+                        }    
+                    }
+                }
+                return winner;
+            }
+        }
+    }
     public static void main(String[] args) {
         ArrayList<Integer> values = new ArrayList<Integer>();
         ArrayList<String> suits = new ArrayList<String>();
@@ -38,25 +112,17 @@ public class CardProject {
         names.add("Katherine");
         names.add("Samson");
         names.add("Maria");
-        
+
         int name = (int)(Math.random() * names.size());
         Dealer dealer = new Dealer(names.get(name));
         names.remove(name);
-        name = (int)(Math.random() * names.size());
-        Player player1 = new Player(names.get(name));
-        names.remove(name);
-        name = (int)(Math.random() * names.size());
-        Player player2 = new Player(names.get(name));
-        names.remove(name);
-        name = (int)(Math.random() * names.size());
-        Player player3 = new Player(names.get(name));
-        names.remove(name);
-        name = (int)(Math.random() * names.size());
-        Player player4 = new Player(names.get(name));
-        names.remove(name);
-        name = (int)(Math.random() * names.size());
-        Player player5 = new Player(names.get(name));
-        names.remove(name);
+
+        ArrayList<Player> players = new ArrayList<Player>();
+        for(byte i = 0; i < 5; i++) {
+            name = (int)(Math.random() * names.size());  
+            players.add(new Player(names.get(name)));
+            names.remove(name);
+        }
 
         System.out.println("And so the card game begins...");
         System.out.println();
@@ -65,11 +131,9 @@ public class CardProject {
         dealer.shuffle(values, suits);
 
         dealer.deal(values, suits, dealer);
-        dealer.deal(values, suits, player1);
-        dealer.deal(values, suits, player2);
-        dealer.deal(values, suits, player3);
-        dealer.deal(values, suits, player4);
-        dealer.deal(values, suits, player5);
+        for(int i = 0; i < players.size(); i++) {
+            dealer.deal(values, suits, players.get(i));
+        }
         
         System.out.println(dealer.name + " deals five cards to each player.");
         System.out.println();
@@ -78,29 +142,24 @@ public class CardProject {
         System.out.println();
 
         dealer.showHand();
-        player1.showHand();
-        player2.showHand();
-        player3.showHand();
-        player4.showHand();
-        player5.showHand();
-
-        String dealerScore = dealer.calculatePoints();
-        String player1Score = player1.calculatePoints();
-        String player2Score = player2.calculatePoints();
-        String player3Score = player3.calculatePoints();
-        String player4Score = player4.calculatePoints();
-        String player5Score = player5.calculatePoints();
-        
-        //With the scores calculated, we can now check who won.
-        
-        int highestScore = Integer.parseInt(dealerScore.substring(0,1));
-        if(Integer.parseInt(player1Score.substring(0,1)) > highestScore) {
-            highestScore = Integer.parseInt(player1Score.substring(0,1));
+        for(int i = 0; i < players.size(); i++) {
+            players.get(i).showHand();
         }
-        
+
+        ArrayList<String> points = new ArrayList<String>();
+        points.add(dealer.calculatePoints());
+        for(int i = 0; i < players.size(); i++) {
+            points.add(players.get(i).calculatePoints());
+        }
 
         System.out.println();
-        System.out.println("The Winner is:");
+        System.out.println(points);
+        
+        //With the scores calculated and put into an array, we can now check who won.
+
         System.out.println();
+        System.out.println("The Winner is...");
+        System.out.println();
+        System.out.println(calculateWinner(points, dealer, players) + "!");
     }
 }
