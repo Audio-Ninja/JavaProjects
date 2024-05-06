@@ -1,19 +1,20 @@
 import java.util.ArrayList;
-
+//The class for ordinary players of the card game.
 public class Player {
-    ArrayList<Integer> handValues = new ArrayList<Integer>();
-    ArrayList<String> handSuits = new ArrayList<String>();
+    ArrayList<Integer> handValues = new ArrayList<Integer>(); //The value (face) of each card the player has.
+    ArrayList<String> handSuits = new ArrayList<String>(); //The suit of each card the player has.
     String name;
 
     public Player (String name) {
         this.name = name;
     }
-
+    //This method prints a list of the player's cards.
     public void showHand() {
         System.out.println(name + "'s hand is:");
         System.out.print("[");
         for(int i = 0; i < handValues.size(); i++) {
             String face;
+            //Converts the face cards from numerical values to strings for display purposes.
             if(handValues.get(i) == 11) {
                 face = "Jack";
             } else if(handValues.get(i) == 12) {
@@ -58,7 +59,7 @@ public class Player {
                 }
             }
             if(counter == 5) {
-                val = "0" + highest; //This is for a royal flush
+                val = "0" + highest; //This is for a royal flush. The best hand is represented with the lowest value, 0.
                 return val;
             } else if(highest - lowest == 4) { //Check for a straight flush
                 val = "1" + highest;
@@ -82,7 +83,7 @@ public class Player {
         int twos = 0;
         int threes = 0;
         for(int i = 0; i < pairs.size(); i++) {
-            if(pairs.get(i) == 4) {
+            if(pairs.get(i) == 4) { //Check for a four of a kind.
                 val = "2" + highest;
                 return val;
             }
@@ -93,18 +94,18 @@ public class Player {
                 twos++;
             }
         }
-        if(twos == 2) {
-            if(threes == 1) {
+        if(twos == 2) { //If there is one pair, do the following.
+            if(threes == 1) { //If there is a pair and a triple, it is a full house.
                 val = "3" + highest;
                 return val;
-            } else {
+            } else { //If there is no triple, it is just a pair.
                 val = "8" + highest;
                 return val;
             }
-        } else if(twos == 4) {
+        } else if(twos == 4) { //If there are two pairs, it is a two pair.
             val = "7" + highest;
             return val;
-        } else if(threes == 1) {
+        } else if(threes == 1) { //If there are no pairs, but there is a triple, it's a three of a kind.
             val = "6" + highest;
             return val;
         }
@@ -113,6 +114,7 @@ public class Player {
             val = "5" + highest;
             return val;
         }
+        //If the hand has nothing special return a 9 followed by the highest card.
         val = "9" + highest;
         return val;
     }
