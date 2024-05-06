@@ -1,3 +1,6 @@
+//Created by Alma Stevens for CTE software development 1
+//instructor: Mr Gross
+
 import java.util.ArrayList;
 //The dealer extends the player, so also have cards and can show them and calculate their points.
 public class Dealer extends Player {
