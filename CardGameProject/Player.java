@@ -1,3 +1,6 @@
+//Created by Alma Stevens for CTE software development 1
+//instructor: Mr Gross
+
 import java.util.ArrayList;
 //The class for ordinary players of the card game.
 public class Player {
